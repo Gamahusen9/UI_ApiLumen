@@ -15,6 +15,9 @@ export default function Navbar() {
         })
         .then(res => {
             setIsLogin(true)
+            if (location.pathname === '/login') {
+                navigate('/profile')
+            }
         })
         .catch(err => {
             setIsLogin(false)
