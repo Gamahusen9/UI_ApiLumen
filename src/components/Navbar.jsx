@@ -35,10 +35,10 @@ export default function Navbar() {
                         >
                             INVENTARIS APP
                         </Link>
-                        <Link to="/login"><small className="text-white">Login</small></Link>
+                        <Link to="/login"><small className="text-white ml-2">Login</small></Link>
                         <div>
                             {
-                                isLogin ? (<Link to="/profile"><small className="text-white">Profile</small></Link>): ''
+                                isLogin ? (<Link to="/profile"><small className="text-white ml-2">Profile</small></Link>): ''
                             }
                         </div>
                     </div>
