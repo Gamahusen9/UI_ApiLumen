@@ -42,7 +42,10 @@ export default function Navbar() {
                         <div>
                             {
                                 isLogin ? (<Link to="/profile"><small className="text-white ml-2">Profile</small></Link>): ''
-                            }
+                        }, 
+                            {
+                                isLogin ? (<Link to="/stuff"><small className="text-white ml-2">Stuff</small></Link>): ''
+                        }, 
                         </div>
                     </div>
                 </section>
