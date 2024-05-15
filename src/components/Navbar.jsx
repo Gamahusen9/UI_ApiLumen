@@ -4,28 +4,30 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
     const [isLogin, setIsLogin] = useState(false)
+    const [auth, setAuth] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
 
     useEffect(() => {
         axios.get('http://localhost:8000/profile', {
             headers: {
-                'Authorization' : 'Bearer' + localStorage.getItem('access_token'),
+                'Authorization': 'Bearer' + localStorage.getItem('access_token'),
             }
         })
-        .then(res => {
-            setIsLogin(true)
-            if (location.pathname === '/login') {
-                navigate('/profile')
-            }
-        })
-        .catch(err => {
-            setIsLogin(false)
-            if (err.response.status == 401 && location.pathname != '/login') {
-                navigate('/login?message=' + encodeURIComponent('Anda belum login'))
-                
-            }
-        })
+            .then(res => {
+                setIsLogin(true)
+                setAuth(res.data.data.role)
+                if (location.pathname === '/login') {
+                    navigate('/profile')
+                }
+            })
+            .catch(err => {
+                setIsLogin(false)
+                if (err.response.status == 401 && location.pathname != '/login') {
+                    navigate('/login?message=' + encodeURIComponent('Anda belum login'))
+
+                }
+            })
     }, [navigate])
     return (
         <div className="bg-blue-600 py-2">
@@ -41,11 +43,20 @@ export default function Navbar() {
                         <Link to="/login"><small className="text-white ml-2">Login</small></Link>
                         <div>
                             {
-                                isLogin ? (<Link to="/profile"><small className="text-white ml-2">Profile</small></Link>): ''
-                        }, 
-                            {
-                                isLogin ? (<Link to="/stuff"><small className="text-white ml-2">Stuff</small></Link>): ''
-                        }, 
+                                isLogin ? auth == 'admin' ?
+                                    (
+                                        <>
+                                            <Link to="/profile"><small className="text-white ml-2">Profile</small></Link>
+                                            <Link to="/stuff"><small className="text-white ml-2">Stuff</small></Link>
+                                            <Link to="/inbound"><small className="text-white ml-2">Inbound</small></Link>
+                                            <Link to="/lending"><small className="text-white ml-2">Lending</small></Link>
+                                            <Link to="/user"><small className="text-white ml-2">User</small></Link>
+                                        </>
+                                    ) : (
+                                        <Link to="/lending"><small className="text-white ml-2">Lending</small></Link>
+                                    ) : ''
+                        }
+
                         </div>
                     </div>
                 </section>

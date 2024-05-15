@@ -5,6 +5,8 @@ import Profile from "./pages/Profile";
 import Stuff from "./pages/stuff/Index"
 import StuffCreate from "./pages/stuff/Create"
 import StuffEdit from "./pages/stuff/Edit"
+// import inbound from "./pages/inbound/";
+
 
 export const router = createBrowserRouter([
     { path: '/', element: <App /> },
@@ -13,5 +15,8 @@ export const router = createBrowserRouter([
     { path: '/stuff', element: <Stuff />},
     { path: '/stuff/create', element: <StuffCreate />},
     { path: '/stuff/edit', element: <StuffEdit />},
+    // { path: '/inbound', element: <Inbound />},
+    // { path: '/lending', element: <Lending />},
+    // { path: '/user', element: <User />}
 
 ])
