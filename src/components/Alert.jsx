@@ -16,7 +16,7 @@ export default function AlertFalse(props) {
                     </svg>
                     <span class="sr-only">Info</span>
                     <div>
-                        <span class="font-medium">Danger alert!</span> {props.message}
+                        <span class="font-medium">Danger alert!</span> {props.message} 
                     </div>
                 </div>)
 
