@@ -5,17 +5,26 @@ import Profile from "./pages/Profile";
 import Stuff from "./pages/stuff/Index"
 import StuffCreate from "./pages/stuff/Create"
 import StuffEdit from "./pages/stuff/Edit"
-// import inbound from "./pages/inbound/";
+import StockEdit from "./pages/stock/Edit"
+import Inbound from "./pages/inbound/Index";
+import InboundCreate from "./pages/inbound/Create"
+import InboundEdit from "./pages/inbound/Edit"
 
 
 export const router = createBrowserRouter([
     { path: '/', element: <App /> },
     { path: '/login', element: <Login /> },
     { path: '/profile', element: <Profile />},
+    //stuff
     { path: '/stuff', element: <Stuff />},
     { path: '/stuff/create', element: <StuffCreate />},
     { path: '/stuff/edit/:id', element: <StuffEdit />},
-    // { path: '/inbound', element: <Inbound />},
+    //stock
+    { path: '/stock/edit/:id', element: <StockEdit />},
+    //Inbound
+    { path: '/inbound', element: <Inbound />},
+    { path: '/inbound/create', element: <InboundCreate />},
+    { path: '/inbound/edit/:id', element: <InboundEdit />},
     // { path: '/lending', element: <Lending />},
     // { path: '/user', element: <User />}
 

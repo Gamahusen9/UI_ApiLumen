@@ -38,7 +38,7 @@ export default function StuffCreate() {
         <Case>
             <div className="block m-auto h-screen bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
                 <div className="items-center m-5 pb-10 pt-10">
-                    {
+                    {/* {
                         Object.keys(error).length > 0 ? (
                             <div role="alert">
                                 <div className="bg-red-500 text-white font-bold rounded-t px-4 py-2">
@@ -56,7 +56,7 @@ export default function StuffCreate() {
                                 </div>
                             </div>
                         ) : ''
-                    }
+                    } */}
 
                     <div className="flex flex-col items-center justify-center">
                         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">

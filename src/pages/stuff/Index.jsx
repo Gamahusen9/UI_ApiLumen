@@ -187,7 +187,10 @@ export default function Stuff() {
                                             <button type="submit" onClick={() => handleCreateStock(stuff.id)} class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Tambah Stock</button>
                                         )
                                             : <>
+                                            <Link to={`/stock/edit/${stuff.stuffstock.id}`}>
                                                 <p className="text-white"><em>data stock sudah ada</em></p> <button  type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Edit</button>
+                                                </Link>
+
                                                 <button type="button" onClick={() => handleDeleteStock(stuff.stuffstock.id)} class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Delete</button>
                                             </>
 
