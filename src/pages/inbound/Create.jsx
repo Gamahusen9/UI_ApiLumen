@@ -47,6 +47,7 @@ export default function inboundCreate() {
             })
     }, [])
 
+    
     const handleCreateInbound = (event) => {
         event.preventDefault();
         const formData = new FormData();

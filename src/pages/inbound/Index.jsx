@@ -129,11 +129,7 @@ export default function Stuff() {
                                     <img className="w-20 h-25" src={imgURL + inbound.proff_file} alt="" />
                                 </td>
                                 <td class="px-6 py-4">
-                                    <Link to={`/inbound/edit/${inbound.id}`}>
-                                        <button type="button" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 m-2">Edit</button>
-                                    </Link>
-                                    
-                                            <button type="button" onClick={() => deleteStuff(stuff.id)} class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" >Delete</button> 
+                                            <button type="button" onClick={() => deleteInbound(inbound.id)} class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" >Delete</button> 
                                 </td>
                             </tr>
                         ))}

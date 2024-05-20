@@ -8,7 +8,6 @@ import StuffEdit from "./pages/stuff/Edit"
 import StockEdit from "./pages/stock/Edit"
 import Inbound from "./pages/inbound/Index";
 import InboundCreate from "./pages/inbound/Create"
-import InboundEdit from "./pages/inbound/Edit"
 
 
 export const router = createBrowserRouter([
@@ -24,7 +23,6 @@ export const router = createBrowserRouter([
     //Inbound
     { path: '/inbound', element: <Inbound />},
     { path: '/inbound/create', element: <InboundCreate />},
-    { path: '/inbound/edit/:id', element: <InboundEdit />},
     // { path: '/lending', element: <Lending />},
     // { path: '/user', element: <User />}
 
