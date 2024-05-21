@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import Case from "../../components/Case";
 import axios from "axios"
 import { useNavigate } from 'react-router-dom'
+import Alert from "../../components/Alert";
+
 
 export default function inboundCreate() {
     const [dataStuff, setStuff] = useState([])
+    const [mess, setMess] = useState([])
+    const [stat, setStat] = useState([])
+
     const [selectedFile, setSelectedFile] = useState(null);
     const onInputChange = (event) => {
         const { name, value } = event.target;
@@ -47,7 +52,7 @@ export default function inboundCreate() {
             })
     }, [])
 
-    
+
     const handleCreateInbound = (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -58,17 +63,27 @@ export default function inboundCreate() {
 
         instance.post('/inbound/create', formData)
             .then(res => {
-                console.log(res.data.data);
-                navigate('/inbound')
+                setTimeout(() => {
+                    navigate('/inbound')
+                }, 2000);
+                setMess(res.data.message)
+                setStat(res.data.success)
             })
             .catch(err => {
-                setError(err.response.data.data)
-                console.log(err.response.data);
+                setMess(err.response.data.message)
+                setStat(err.response.data.success)
+                setError(err.response.data)
             })
     }
 
     return (
         <Case>
+            {
+                stat === false ? (<Alert alert='false' message={mess} />) : ''
+            }
+            {
+                stat === true ? (<Alert alert='true' message={mess} />) : ''
+            }
 
             <div className="items-center  pb-10 pt-10">
                 {/* {

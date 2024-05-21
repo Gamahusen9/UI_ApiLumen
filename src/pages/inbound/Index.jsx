@@ -58,7 +58,7 @@ export default function Stuff() {
         <Case>
             {
                 stat === false ? (<Alert alert='false' message={mess} />) : ''
-            }
+            }   
             {
                 stat === true ? (<Alert alert='true' message={mess} />) : ''
             }
