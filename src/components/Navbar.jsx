@@ -36,17 +36,17 @@ export default function Navbar() {
                     <div className="flex items-center">
                         <Link
                             className="mr-2 text-sm font-semibold uppercase text-white"
-                            to="/"
+                            to="/dashboard"
                         >
                             INVENTARIS APP
                         </Link>
                         <Link to="/login"><small className="text-white ml-2">Login</small></Link>
                         <div>
+                            <Link to="/profile"><small className="text-white ml-2">Profile</small></Link>
                             {
                                 isLogin ? auth == 'admin' ?
                                     (
                                         <>
-                                            <Link to="/profile"><small className="text-white ml-2">Profile</small></Link>
                                             <Link to="/stuff"><small className="text-white ml-2">Stuff</small></Link>
                                             <Link to="/inbound"><small className="text-white ml-2">Inbound</small></Link>
                                             <Link to="/lending"><small className="text-white ml-2">Lending</small></Link>
@@ -55,7 +55,7 @@ export default function Navbar() {
                                     ) : (
                                         <Link to="/lending"><small className="text-white ml-2">Lending</small></Link>
                                     ) : ''
-                        }
+                            }
 
                         </div>
                     </div>

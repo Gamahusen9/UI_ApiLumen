@@ -72,7 +72,6 @@ export default function Stuff() {
                     </svg>
                     </button>
                 </Link>
-
             </div>
 
 

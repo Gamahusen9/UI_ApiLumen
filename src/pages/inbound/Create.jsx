@@ -56,11 +56,11 @@ export default function inboundCreate() {
     const handleCreateInbound = (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('stuff_id', forms.stuff_id);
+        formData.append('stuff_id', forms.stuff_id)
         formData.append('total', forms.total);
         formData.append('date', forms.date);
         formData.append('proff_file', forms.proff_file);
-
+        console.log(forms);
         instance.post('/inbound/create', formData)
             .then(res => {
                 setTimeout(() => {
