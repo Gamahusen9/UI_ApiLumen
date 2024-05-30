@@ -10,6 +10,7 @@ import InboundCreate from "./pages/inbound/Create"
 import Lending from "./pages/Lending"
 import User from "./pages/User"
 import Restorations from "./pages/Restore"
+import LendingShow from "./pages/lendingShow"
 
 
 export const router = createBrowserRouter([
@@ -28,5 +29,7 @@ export const router = createBrowserRouter([
     // User
     { path: '/user', element: <User />},
     // Restorations
-    { path: '/restorations', element: <Restorations />}
+    { path: '/restorations', element: <Restorations />},
+    // lendingShow
+    { path: '/lendingShow/:id', element: <LendingShow />}
 ])

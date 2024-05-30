@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Case from "../components/Case";
 import axios from "axios"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Table from "../components/Table";
 import { DotLoader } from "react-spinners";
 
-export default function Inbound() {
+export default function LendingShow() {
     const [dataUser, setUser] = useState([])
     const [loading, setLoading] = useState(true)
+    const [lending, setLending] = useState([])
 
+    const { id } = useParams()
 
 
     const navigate = useNavigate();
@@ -28,7 +30,23 @@ export default function Inbound() {
             .then(res => {
                 setLoading(false)
                 setUser(res.data.data)
-                console.log(res.data.data);
+            })
+            .catch(err => {
+                if (err.response.status == 401) {
+                    navigate('/login?message = ' + encodeURIComponent('anda belum login'))
+
+                }
+            })
+    }
+
+    function getLending() {
+        instance.get('/lending', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+            }
+        })
+            .then(res => {
+                setLending(res.data.data)
             })
             .catch(err => {
                 if (err.response.status == 401) {
@@ -41,78 +59,58 @@ export default function Inbound() {
 
 
 
+
+    let tampungDataLending = []
+
+
+    lending.map(data => {
+        console.log(id);
+        if (data.user_id == id) {
+            tampungDataLending.push(data)
+        }
+    })
+    console.log(tampungDataLending);
+
+
+
     useEffect(() => {
         getUser();
+        getLending();
     }, [])
 
 
 
-    const endPointModal = {
-        "data_detail": "http://localhost:8000/user/show/{id}",
-        "delete": "http://localhost:8000/user/delete/{id}",
-        "update": "http://localhost:8000/user/patch/{id}",
-        "store": "http://localhost:8000/user/create"
-    }
+
 
     const headers = [
         "#",
         "Username",
-        "Email",
         "Role",
-        "Action"
+        "Nama barang",
+        "Category",
+        "Total Barang Stuff",
+        "Notes"
     ]
     const coloumnForTd = [
         "id",
         "username",
-        "email",
         "role",
+        "name",
+        "category",
+        "total_stuff",
+        "notes"
     ]
 
-    const title = 'User'
+    const title = 'LendingShowByUser'
 
-    const categoryOption = [
-        { id: 'admin', name: 'Admin' },
-        { id: 'staff', name: 'Staff' },
-    ]
-
-
-
-    const inputData = {
-        "username": {
-            "tag": "input",
-            "type": "text",
-            "option": null,
-            "label": "Username"
-        },
-        "email": {
-            "tag": "input",
-            "type": "email",
-            "option": null,
-            "label": "Email"
-        },
-        "role": {
-            "tag": "select",
-            "type": "select",
-            "option": categoryOption,
-            "label": "Name"
-        },
-
-        "password": {
-            "tag": "input",
-            "type": "password",
-            "option": null,
-            "label": "Password"
-        }
-    }
-
+   
 
 
     const buttons = [
-        'create',
+        // 'create',
         // 'trash',
-        'edit',
-        'delete',
-        'lendingShow'
+        // 'edit',
+        // 'delete'
     ]
 
 
@@ -126,7 +124,7 @@ export default function Inbound() {
                     </div>
 
                     :
-                    <Table headers={headers} data={dataUser} endPointModal={endPointModal} inputData={inputData} opsiButton={buttons} coloumnForTd={coloumnForTd} title={title}></Table>
+                    <Table headers={headers} data={tampungDataLending}  opsiButton={buttons} coloumnForTd={coloumnForTd} title={title}></Table>
             }
         </Case>
     )

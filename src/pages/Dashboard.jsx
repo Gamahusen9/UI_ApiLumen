@@ -4,11 +4,14 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts'
 import { DotLoader } from 'react-spinners'
+import Profile from './Profile'
 
 
 export default function dashboard() {
     const [user, setUser] = useState([])
     const [stuff, setStuff] = useState([])
+    const [profile, setProfile] = useState([])
+    const [lendings, setLending] = useState([])
     const [checkProces, setCheckProses] = useState(false)
     const [lending, setLendingGrouped] = useState([])
     const [loading, setLoading] = useState(true)
@@ -19,6 +22,8 @@ export default function dashboard() {
         getDataUser();
         getDataStuff();
         getDataLendings();
+        getDataIdUser();
+        getLending();
     }, [checkProces]);
 
 
@@ -92,14 +97,33 @@ export default function dashboard() {
             })
     }
 
-    function getDataStuff() {
-        instance.get('/stuff', {
+    function getDataIdUser(){
+        instance.get('/profile', {
             headers: {
-                'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                'Authorization' : 'Bearer ' + localStorage.getItem('access_token')
             }
         })
+
             .then(res => {
-                setStuff(res.data.data)
+                setProfile(res.data.data)
+            })
+            .catch(err => {
+                if (err.response.status == 401) {
+                    navigate('/login?message = ' + encodeURIComponent('anda belum login'))
+
+                }
+            })
+    }
+
+    function getLending() {
+        instance.get('/lending', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+            }
+        })
+
+            .then(res => {
+                setLending(res.data.data)
             })
             .catch(err => {
                 if (err.response.status == 401) {
@@ -111,6 +135,41 @@ export default function dashboard() {
 
 
 
+
+    function getDataStuff() {
+        instance.get('/stuff', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+            }
+        })
+            .then(res => {
+                setStuff(res.data.data)
+                
+            })
+            .catch(err => {
+                if (err.response.status == 401) {
+                    navigate('/login?message = ' + encodeURIComponent('anda belum login'))
+
+                }
+            })
+    }
+
+
+
+
+    let lendingBelumRestore = []
+
+    lendings.map(data => {
+        if (data.restorations) {
+            lendingBelumRestore.push(data)
+        }
+    })
+    let countLendingByUser = []
+    lendings.map(data => {
+        if (data.user_id === profile.id) {
+            countLendingByUser.push(data)
+        }
+    })
 
     return (
         <Case>
@@ -139,6 +198,44 @@ export default function dashboard() {
                                             <h1 className="text-white dark:text-white text-lg font-medium">{stuff.length}</h1>
                                         }
 
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="p-4 w-1/2">
+                                <div className="flex rounded-lg h-full dark:bg-gray-800 bg-teal-400 p-8 flex-col">
+                                    <div className="flex items-center mb-3">
+                                        <div
+                                            className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
+                                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
+                                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                            </svg>
+                                        </div>
+                                        <h2 className="text-white dark:text-white text-lg font-medium">Data Lending By User</h2>
+                                    </div>
+                                    <div className="flex flex-col justify-between flex-grow">
+                                        {
+                                            <h1 className="text-white dark:text-white text-lg font-medium">{countLendingByUser.length}</h1>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="p-4 w-1/2">
+                                <div className="flex rounded-lg h-full dark:bg-gray-800 bg-teal-400 p-8 flex-col">
+                                    <div className="flex items-center mb-3">
+                                        <div
+                                            className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full dark:bg-indigo-500 bg-indigo-500 text-white flex-shrink-0">
+                                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
+                                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                                            </svg>
+                                        </div>
+                                        <h2 className="text-white dark:text-white text-lg font-medium">Data Lending Belum Di Restore</h2>
+                                    </div>
+                                    <div className="flex flex-col justify-between flex-grow">
+                                        {
+                                            <h1 className="text-white dark:text-white text-lg font-medium">{lendingBelumRestore.length}</h1>
+                                        }
                                     </div>
                                 </div>
                             </div>
