@@ -48,6 +48,8 @@ export default function Profile() {
                 }
             })
     }, [])
+
+
     return (
         <Case>
             {

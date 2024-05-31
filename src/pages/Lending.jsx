@@ -125,8 +125,8 @@ export default function Inbound() {
         ],
             buttons = [
                 'create',
-                'trash',
-                'edit',
+                // 'trash',
+                // 'edit',
                 'delete',
                 'restore'
             ]

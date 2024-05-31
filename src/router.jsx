@@ -9,6 +9,7 @@ import Inbound from "./pages/Inbound"
 import InboundCreate from "./pages/inbound/Create"
 import Lending from "./pages/Lending"
 import User from "./pages/User"
+import UserTrash from "./pages/trashUser"
 import Restorations from "./pages/Restore"
 import LendingShow from "./pages/lendingShow"
 
@@ -28,6 +29,7 @@ export const router = createBrowserRouter([
     { path: '/lending', element: <Lending />},
     // User
     { path: '/user', element: <User />},
+    { path: '/user/trash', element: <UserTrash />},
     // Restorations
     { path: '/restorations', element: <Restorations />},
     // lendingShow

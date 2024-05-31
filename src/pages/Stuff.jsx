@@ -43,7 +43,9 @@ export default function Stuff() {
         "data_detail": "http://localhost:8000/stuff/show/{id}",
         "delete": "http://localhost:8000/stuff/delete/{id}",
         "update": "http://localhost:8000/stuff/patch/{id}",
-        "store": "http://localhost:8000/stuff/create"
+        "store": "http://localhost:8000/stuff/create",
+        "trash": "/stuff/trash"
+
     }
 
     const headers = [

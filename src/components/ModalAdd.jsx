@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import AlertFalse from "./Alert";
 
 export default function ModalAdd({ isOpen, onClose, endPoint, inputData, title }) {
-    if (!isOpen) {
+    if (!isOpen) {  
         return null
     }
 
@@ -54,6 +54,7 @@ export default function ModalAdd({ isOpen, onClose, endPoint, inputData, title }
             .catch(err => {
                 setMess(err.response.data.message)
                 setStat(err.response.data.success)
+                console.log(err);
                 if (err.response.status == 401) {
                     Navigate('/login?message=' + encodeURIComponent('Anda belum login'))
                 } else {

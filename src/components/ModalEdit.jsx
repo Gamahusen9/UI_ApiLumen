@@ -150,7 +150,7 @@ export default function ModalEdit({ isOpen, onClose, endPoint, inputData, title 
                                                             <label for={index} class="block text-sm font-medium text-gray-900 dark:text-white capitalize mb-3">
                                                                 {item.label}
                                                             </label>
-                                                            <input type={item.type} name={index} id={index} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={dataDetail[key]} onChange={e => setDataDetail({ ...dataDetail, [key]: e.target.value })} />
+                                                            <input type={item.type} name={index} id={index} class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value={dataDetail[key]} onChange={e => setDataDetail({ ...dataDetail, [key]: e.target.value })} required/>
                                                         </div>
                                                     ) : ''
                                             }

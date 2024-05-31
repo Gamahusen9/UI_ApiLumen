@@ -51,7 +51,9 @@ export default function Inbound() {
         "data_detail": "http://localhost:8000/user/show/{id}",
         "delete": "http://localhost:8000/user/delete/{id}",
         "update": "http://localhost:8000/user/patch/{id}",
-        "store": "http://localhost:8000/user/create"
+        "store": "http://localhost:8000/user/create",
+        "trash": "/user/trash"
+
     }
 
     const headers = [
@@ -109,10 +111,10 @@ export default function Inbound() {
 
     const buttons = [
         'create',
-        // 'trash',
+        'trash',
         'edit',
         'delete',
-        'lendingShow'
+        'lendingShow', 
     ]
 
 

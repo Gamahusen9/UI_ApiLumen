@@ -42,7 +42,7 @@ export default function TrashStuff() {
     const coloumnIdentitasDelete = "name"
 
     const buttons = [
-        "restore", 
+        "trashButtonTd", 
         "permanentDelete"
     ]
 
@@ -54,7 +54,7 @@ export default function TrashStuff() {
 
     const endPointModal = {
         "restore" : "http://localhost:8000/stuff/restore/{id}",
-        "delete_permanent" : "http://localhost:8000/stuff/permanentDel/{id}"
+        "delete_permanent" : "http://localhost:8000/stuff/permanentDel/{id}",
     }
 
     return (

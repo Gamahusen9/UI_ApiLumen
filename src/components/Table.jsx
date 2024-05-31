@@ -166,7 +166,7 @@ export default function Table({ headers, data, endPointModal, identitasColoumn, 
                             <button type="button" onClick={handleModalAdd} class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mb-5 rounded-lg">Create</button> : ''
                     }
                     {
-                        opsiButton.includes('trash') ? <Link to={'/stuff/trash'} class="inline-flex items-center px-4 py-2 text-sm ml-3 font-medium text-center text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 mb-5 rounded-lg">Trash</Link>
+                        opsiButton.includes('trash') ? <Link to={endPointModal['trash']} class="inline-flex items-center px-4 py-2 text-sm ml-3 font-medium text-center text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:outline-none focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 mb-5 rounded-lg">Trash</Link>
                             : ''
                     }
 
@@ -206,10 +206,17 @@ export default function Table({ headers, data, endPointModal, identitasColoumn, 
                                         opsiButton.includes('delete') ? (
                                             <button type="button" onClick={() => handleModalDelete(items.id)} className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Delete</button>
                                         ) : ''
-                                    } {
+                                    }
+                                    {
 
                                         opsiButton.includes('permanentDelete') ? (
                                             <button type="button" onClick={() => handlePermanentDel(items.id)} className="font-medium text-red-500 dark:text-red-500 hover:underline ml-3">Permanent Delete</button>
+                                        ) : ''
+                                    }
+                                    {
+
+                                        opsiButton.includes('trashButtonTd') ? (
+                                            <button type="button" onClick={() => handleRestore(items.id)} className="font-medium text-green-500 dark:text-green-500 hover:underline ml-3">Restore</button>
                                         ) : ''
                                     }
                                     {

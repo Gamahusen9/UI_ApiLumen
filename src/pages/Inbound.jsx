@@ -125,7 +125,7 @@ export default function Inbound() {
 
     const buttons = [
         'create',
-        'trash',
+        // 'trash',
         'delete'
     ]
 
